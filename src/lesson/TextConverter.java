@@ -104,6 +104,8 @@ public class TextConverter extends JFrame {
 
         result = post(apiURL, requestHeaders, text);
         
+        result = result.substring(result.indexOf("translatedText")+"translatedText".length()+3,result.indexOf("engineType")-3);
+        
         return result;
 	}
 
