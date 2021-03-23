@@ -104,9 +104,16 @@ public class TextConverter extends JFrame {
 
         result = post(apiURL, requestHeaders, text);
         
-        result = result.substring(result.indexOf("translatedText")+"translatedText".length()+3,result.indexOf("engineType")-3);
+//        result = result.substring(result.indexOf("translatedText")+"translatedText".length()+3,result.indexOf("engineType")-3);
+        JSONParser parser = new JSONParser();
         
-        return result;
+        JSONObject obj = (JSONObject) parser.parse(result);
+        JSONObject msg = (JSONObject) obj.get("message");
+        JSONObject rs = (JSONObject) msg.get("result");
+        
+        String jsonResult = rs.get("translatedText").toString();
+        
+        return jsonResult;
 	}
 
 	private static String post(String apiUrl, Map<String, String> requestHeaders, String text){
