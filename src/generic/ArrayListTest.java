@@ -13,7 +13,7 @@ public class ArrayListTest {
 		strList.add("우유3");
 		strList.add("우유4");
 		strList.add("우유5");
-	
+		
 		for(int i = 0; i<strList.size(); i++) {
 			System.out.println(strList.get(i));
 		}
